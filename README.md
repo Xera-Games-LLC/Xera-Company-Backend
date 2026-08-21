@@ -1,4 +1,4 @@
-# Xera Company Backend
+# Xera Company Backend [1.60 - 1.75, Steam + Quest]
 
 Open source, Nakama-free revival backend for **Animal Company 1.60 - 1.75**
 
