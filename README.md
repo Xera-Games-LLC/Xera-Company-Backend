@@ -1,6 +1,8 @@
 # Xera Company Backend
 
-Open source, Nakama-free revival backend for **Animal Company 1.60 - 1.75**.
+Open source, Nakama-free revival backend for **Animal Company 1.60 - 1.75**
+
+Just a little gift to the community because people like to copy my stuff, so I would rather just let everyone use it 🤷‍♂️
 
 This is months of reverse-engineering work, given away for free. If you use it, **please star the repo**, that's all I ask!
 
