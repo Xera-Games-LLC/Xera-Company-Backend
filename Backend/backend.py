@@ -1,6 +1,6 @@
 """
 Xera Company Private Server, by Juelz Irons
-For AC 1.60 - 1.75
+For AC 1.60 - 1.75 (Quest AND Steam supported!)
 
 This is months of Animal Company RE work, released free for everyone.
 If you use this, please star the repo! it costs nothing and helps a ton:
