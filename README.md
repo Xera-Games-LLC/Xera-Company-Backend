@@ -101,40 +101,28 @@ Repack the modified files back into an APK and sign it with APKToolGUI (or `apks
 
 ## 7. Host the backend on PythonAnywhere
 
-The backend lives in the **`/Backend`** folder of this repo. Here's how to get it running on PythonAnywhere without needing git.
-
-1. **Create an account** at [pythonanywhere.com](https://www.pythonanywhere.com/). The free "Beginner" tier is enough to get started.
-2. **Download the repo as a zip.** On the [GitHub repo page](https://github.com/Xera-Games-LLC/Xera-Company-Backend), click the green **Code** button, then **Download ZIP**.
-3. **Upload the zip to PythonAnywhere.** Go to the **Files** tab on your PythonAnywhere dashboard and upload the zip file into your home directory.
-4. **Unzip it.** Open a **Bash console** from the dashboard and run:
-   ```bash
-   unzip Xera-Company-Backend-main.zip
+1. **Create an account** at [pythonanywhere.com](https://www.pythonanywhere.com/).
+2. **Go to your web apps page:** Navigate to `https://www.pythonanywhere.com/user/YOURUSERNAME/webapps` (replace `YOURUSERNAME` with your PythonAnywhere username).
+3. **Delete your old webapp** (if you have one) to avoid conflicts.
+4. **Add a new webapp:**
+   - Click **"Add a new web app"**
+   - Select **Flask** as the framework
+   - Choose **Python 3.12** as the version
+5. **Set the application path:** When prompted for the path, enter:
    ```
-   (the exact filename may differ slightly depending on how GitHub named the download).
-5. **Install dependencies.** Still in the Bash console, move into the `Backend` folder and install what the server needs:
-   ```bash
-   cd Xera-Company-Backend-main/Backend
-   pip3.10 install --user flask requests pytz
+   /home/YOURUSERNAME/XeraCompany/backend.py
    ```
-   (adjust `pip3.10` to whatever Python version your PythonAnywhere account uses).
-6. **Create a new Web App:**
-   - Go to the **Web** tab, then **Add a new web app**
-   - Choose **Manual configuration** (not "Flask", since we're pointing it at our own `app`/`application` object)
-   - Pick the Python version matching what you installed dependencies for
-7. **Point the WSGI file at the backend.** Click the WSGI configuration file link on the Web tab and replace its contents with:
-   ```python
-   import sys
-   path = '/home/your-username/Xera-Company-Backend-main/Backend'
-   if path not in sys.path:
-       sys.path.insert(0, path)
-
-   from backend import application
-   ```
-   Replace `your-username` with your actual PythonAnywhere username, and double check the folder path matches where you unzipped things.
-8. **Reload the web app** using the green **Reload** button on the Web tab.
+   Replace `YOURUSERNAME` with your actual PythonAnywhere username.
+6. **Add the backend code:**
+   - Go to the **Files** tab
+   - Navigate to the path you set above (`/home/YOURUSERNAME/XeraCompany/`)
+   - Open `backend.py` and paste the contents of `backend.py` from this repo
+   - Add all the gamedata files and JSON files from the backend folder
+7. **Update all paths in the code:** Open `backend.py` and change any hardcoded paths to use your PythonAnywhere username instead of the default placeholders.
+8. **Reload the server:** Click the green **Reload** button on the Web tab to restart your app.
 9. Your backend is now live at `https://your-name.pythonanywhere.com`, the URL you patched into the APK back in [Step 3](#3-patch-the-server-url).
 
-> Note: on the free tier, PythonAnywhere apps go to sleep after a period of inactivity and your custom domain options are limited. That's fine for testing, but consider a paid tier (or your own VPS) if you want a server that's always on for other players.
+> Note: on the free tier, PythonAnywhere apps go to sleep after a period of inactivity. Consider a paid tier (or your own VPS) if you want a server that's always on for other players.
 
 ---
 
